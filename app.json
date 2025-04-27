@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "my-app",
+    "slug": "my-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./MyApp/assets/images/splash-icon.png",  
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "icon": "./assets/images/app-icon.png" 
+      }
+    },
+    "web": {
+      "favicon": "./assets/images/favicon.png" 
+    }
+  }
+}
