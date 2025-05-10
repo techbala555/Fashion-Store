@@ -4,9 +4,14 @@ import React from "react";
 import { View,Text,StyleSheet } from "react-native";
 import { AppModuleParamList } from "../app.navigation";
 import LoginButton from "../Components/LoginButton";
+import Home from "./Home";
 
 const thankYou =()=>{
-    
+
+  const navigation = useNavigation<NativeStackNavigationProp<AppModuleParamList,'Home'>>()
+    const handlePress =()=>{
+      navigation.navigate("Home")
+    }
     return(
         <View style={styles.container}>
             <View style={styles.midContainer}>
@@ -14,9 +19,7 @@ const thankYou =()=>{
             <Text style={styles.subtitle}>
             Your mobile number has been {'\n'}successfully validated.    
             </Text>
-            <LoginButton title={"Continue"} onPress={function (): void {
-                throw new Error("Function not implemented.");
-            } } children={""}
+            <LoginButton title={"Continue"} onPress={handlePress} children={""}
             style={styles.button}/>
             </View>
             
