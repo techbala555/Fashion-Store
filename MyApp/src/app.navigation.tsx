@@ -7,6 +7,7 @@ import LoginMobile from "./Screens/LoginMobile"
 import otpVerify from "./Screens/otpVerify"
 import thankYou from "./Screens/thankYou"
 import Home from "./Screens/Home"
+import ProductDetails from "./Screens/ProductDetails"
 
 
 
@@ -17,6 +18,7 @@ export type AppModuleParamList={
     Verify:undefined
     thankYou:undefined
     Home:undefined
+    ProductDetails:undefined
 }
 
 const AppModule = createNativeStackNavigator<AppModuleParamList>();
@@ -56,6 +58,11 @@ export function AppNavigation (){
                name="Home"
                component={Home}/>
 
+               <AppModule.Screen
+               name="ProductDetails"
+               component={ProductDetails}/>
+
+            
             </AppModule.Navigator>
         </NavigationContainer>
     )

@@ -5,8 +5,14 @@ import SearchIcon from "../../assets/SVG/SearchIcon";
 import BagIcon from "../../assets/SVG/BagIcon";
 import NotificationIcon from "../../assets/SVG/NotificationIcon ";
 import LoginButton from "../Components/LoginButton";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { AppModuleParamList } from "../app.navigation";
+import { useNavigation } from "@react-navigation/native";
 
+
+type ProductdetailsNavigationProp = NativeStackNavigationProp<AppModuleParamList, 'ProductDetails'>;
 const Home =() =>{
+    const navigation = useNavigation<ProductdetailsNavigationProp>();
     const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
     const ScreenWidth = Dimensions.get('screen').width;
     const [activeIndex,setActiveIndex] = useState(0);
@@ -36,17 +42,53 @@ const Home =() =>{
             image:require('../../assets/images/yellow jacket.png')
         },
         {
-            id:'5',
-            name:'Blue dress',
-            price:'$2.5',
-            image:require('../../assets/images/bluedress.jpg')
+         id:'1',
+         name:"Brown Jacket",
+         price:'$1.85',
+         image:require('../../assets/images/Brown Jacket.png' )
         },
         {
-            id:'6',
-            name:'greendress ',
+         id:'1',
+         name:"Brown Jacket",
+         price:'$1.85',
+         image:require('../../assets/images/Brown Jacket.png' )
+        },
+         {
+            id:'2',
+            name:'Brown Jacket',
             price:'$2.5',
-            image:require('../../assets/images/greendress.jpg')
-        }
+            image:require('../../assets/images/Floral Dress.png')
+        },
+         {
+            id:'2',
+            name:'Brown Jacket',
+            price:'$2.5',
+            image:require('../../assets/images/Floral Dress.png')
+        },
+         {
+            id:'2',
+            name:'Brown Jacket',
+            price:'$2.5',
+            image:require('../../assets/images/Floral Dress.png')
+        },
+         {
+            id:'2',
+            name:'Brown Jacket',
+            price:'$2.5',
+            image:require('../../assets/images/Floral Dress.png')
+        },
+        {
+            id:'2',
+            name:'Brown Jacket',
+            price:'$2.5',
+            image:require('../../assets/images/Floral Dress.png')
+        },
+         {
+            id:'2',
+            name:'Brown Jacket',
+            price:'$2.5',
+            image:require('../../assets/images/Floral Dress.png')
+        },
     ]
     return(
         <View style={styles.container}>
@@ -133,14 +175,20 @@ const Home =() =>{
                 keyExtractor={(item)=> item.id}
                 numColumns={2}
                 renderItem={({item}) => (
-                <View style={styles.card}>
-                    <Image source={item.image} style={styles.image}/>
+              
+                   <TouchableOpacity
+                   style={styles.card}
+                   onPress={()=>navigation.navigate('ProductDetails')}
+                  >
+                    
+                     <Image source={item.image} style={styles.image}/>
                     <Text style={styles.name}>{item.name}</Text>
                     <Text style={styles.price}>{item.price}</Text>
-                </View>
+                   </TouchableOpacity>
+             
                 )}
                 contentContainerStyle={styles.catcontainer}
-                columnWrapperStyle={{justifyContent:'space-between'}}
+                columnWrapperStyle={{justifyContent:'space-evenly'}}
                 showsVerticalScrollIndicator={false}
                 />
             </View>
@@ -312,8 +360,8 @@ const styles=StyleSheet.create({
         marginTop:20
       },
       catcontainer:{
-       paddingHorizontal:20,
-       paddingBottom:40
+    //    paddingHorizontal:20,
+    //    paddingBottom:40
       },
       card: {
             backgroundColor: '#fff',
