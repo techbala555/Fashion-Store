@@ -35,7 +35,7 @@ const Welcome = () => {
           style={styles.button}
           // labelStyle={styles.labeltext}
           title="Let’s Get Started"
-          onPress={() => navigation.navigate('Login')} children={""}        />
+          onPress={() => navigation.navigate('Login')} children={""}/>
         <View style={styles.signInContainer}>
           <Text style={styles.signin}>
             Already Have an Account?{' '}

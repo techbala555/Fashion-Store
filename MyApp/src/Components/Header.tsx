@@ -31,6 +31,7 @@ container:{
     alignItems:'center',
     paddingHorizontal:20,
     justifyContent:'space-between',  
+    marginTop:60
 },
 title:{
     fontSize:18,
