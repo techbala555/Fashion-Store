@@ -8,6 +8,7 @@ import LoginButton from "../Components/LoginButton";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { AppModuleParamList } from "../app.navigation";
 import { useNavigation } from "@react-navigation/native";
+import Navbar from "../Components/Navbar";
 
 
 type ProductdetailsNavigationProp = NativeStackNavigationProp<AppModuleParamList, 'ProductDetails'>;
@@ -192,7 +193,7 @@ const Home =() =>{
                 showsVerticalScrollIndicator={false}
                 />
             </View>
-
+            <Navbar/>
         </View>
     )
 };
@@ -357,7 +358,7 @@ const styles=StyleSheet.create({
         fontSize:20,
         fontWeight:'semibold',
         marginLeft:30,
-        marginTop:20
+        marginTop:10
       },
       catcontainer:{
     //    paddingHorizontal:20,

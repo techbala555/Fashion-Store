@@ -2,13 +2,16 @@ import React from "react";
 import { Text,View,StyleSheet,TouchableOpacity } from "react-native";
 import BackArrow from "../../assets/SVG/BackArrow";
 import HeartLike from "../../assets/SVG/HeartLike";
+import { useNavigation } from "@react-navigation/native";
 
 
 
 const Header =({title,showback=true})=>{
+const navigation = useNavigation();
+
     return(
        <View style={styles.container}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
                 <BackArrow />
             </TouchableOpacity>
             <Text style={styles.title}>{title}</Text>

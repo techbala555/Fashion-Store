@@ -5,12 +5,13 @@ import { View,Text,StyleSheet } from "react-native";
 import { AppModuleParamList } from "../app.navigation";
 import LoginButton from "../Components/LoginButton";
 import Home from "./Home";
+import BottomTabNavigator from "../BottomTabNavigator";
 
 const thankYou =()=>{
 
   const navigation = useNavigation<NativeStackNavigationProp<AppModuleParamList,'Home'>>()
     const handlePress =()=>{
-      navigation.navigate("Home")
+      navigation.navigate("BottomTabNavigator")
     }
     return(
         <View style={styles.container}>
