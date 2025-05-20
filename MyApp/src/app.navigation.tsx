@@ -9,6 +9,7 @@ import thankYou from "./Screens/thankYou"
 import Home from "./Screens/Home"
 import ProductDetails from "./Screens/ProductDetails"
 import BottomTabNavigator from "../src/BottomTabNavigator"
+import CheckOutPage from "./Screens/CheckOutPage"
 
 
 
@@ -21,6 +22,7 @@ export type AppModuleParamList={
     Home:undefined
     ProductDetails:undefined
     BottomTabNavigator:undefined
+    CheckOutPage:undefined
 }
 
 const AppModule = createNativeStackNavigator<AppModuleParamList>();
@@ -67,6 +69,10 @@ export function AppNavigation (){
                <AppModule.Screen
               name="BottomTabNavigator"
               component={BottomTabNavigator}/>
+
+              <AppModule.Screen
+              name="CheckOutPage"
+              component={CheckOutPage}/>
 
             
             </AppModule.Navigator>

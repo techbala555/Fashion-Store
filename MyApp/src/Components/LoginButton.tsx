@@ -1,55 +1,97 @@
 import React from "react";
-import { StyleSheet,StyleProp,TextStyle,ViewStyle} from "react-native";
-import { Button,ButtonProps } from "react-native-paper";
+import {
+  StyleSheet,
+  StyleProp,
+  TextStyle,
+  ViewStyle,
+} from "react-native";
+import { Button, ButtonProps } from "react-native-paper";
 
 interface LoginButtonProps extends ButtonProps {
-    title:string;
-    onPress: ()=> void;
-    disabled?:boolean
-    buttonStyle?:StyleProp<ViewStyle>;
-    labelStyle?:StyleProp<ViewStyle>;
+  title: string;
+  onPress: () => void;
+  disabled?: boolean;
+  buttonStyle?: StyleProp<ViewStyle>;
+  labelStyle?: StyleProp<TextStyle>;
+  variant?: 'primary' | 'secondary' | 'text';
 }
 
-const LoginButton : React.FC<LoginButtonProps> = ({
-    title,
-    onPress,
-    buttonStyle,
-    labelStyle,
-    mode = "Contained",
-    ...rest
+const LoginButton: React.FC<LoginButtonProps> = ({
+  title,
+  onPress,
+  buttonStyle,
+  labelStyle,
+  variant = 'primary',
+  ...rest
 }) => {
-    return (
-        <Button
-        mode="contained"
-        onPress={onPress}
-        style={[styles.defaultButton,buttonStyle]}
-        labelStyle={[styles.defaultLabel,labelStyle]}
-        {...rest}
-    >{title}</Button>)
-}
+  const getMode = () => {
+    if (variant === 'secondary') return 'outlined';
+    if (variant === 'text') return 'text';
+    return 'contained';
+  };
+
+  const combinedButtonStyle = [
+    styles.defaultButton,
+    variant === 'secondary' && styles.outlineButton,
+    variant === 'text' && styles.textButton,
+    buttonStyle,
+  ];
+
+  const combinedLabelStyle = [
+    styles.defaultLabel,
+    variant === 'secondary' && styles.outlineLabel,
+    variant === 'text' && styles.textLabel,
+    labelStyle,
+  ];
+
+  return (
+    <Button
+      mode={getMode()}
+      onPress={onPress}
+      style={combinedButtonStyle}
+      labelStyle={combinedLabelStyle}
+      {...rest}
+    >
+      {title}
+    </Button>
+  );
+};
 
 export default LoginButton;
 
-const styles=StyleSheet.create({
-    defaultButton: {
-       width:'90%',
-        borderRadius: 30,
-        borderWidth: 2,
-        backgroundColor: '#F16023',
-        paddingVertical: 12,
-        alignItems: 'center',
-        borderColor: '#F16023',
-        marginTop: 20, // spacing top
-        alignSelf: 'center', // center horizontally
-      },
-      
-      defaultLabel:{
-        color:'#fff',
-        fontSize:16,
-        fontWeight:'600'
-    },
-    disablebutton:{
-        backgroundColor:"#F16023",
-        opacity:0.25  
-    }
-})
+const styles = StyleSheet.create({
+  defaultButton: {
+    width: '90%',
+    borderRadius: 30,
+    paddingVertical: 12,
+    marginTop: 20,
+    alignSelf: 'center',
+    borderWidth: 2,
+    borderColor: '#F16023',
+    backgroundColor: '#F16023',
+  },
+  defaultLabel: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#fff',
+  },
+  outlineButton: {
+    backgroundColor: 'transparent',
+    borderColor: '#F16023',
+    borderWidth: 2,
+  },
+  outlineLabel: {
+    color: '#F16023',
+  },
+  textButton: {
+    backgroundColor: 'transparent',
+    borderWidth: 0,
+  },
+  textLabel: {
+    color: '#F16023',
+  },
+  disablebutton: {
+    backgroundColor: '#F16023',
+    opacity: 0.25,
+  },
+});

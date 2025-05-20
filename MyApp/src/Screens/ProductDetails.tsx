@@ -138,7 +138,7 @@ priceAmount: {
 buttonView: {
   width: 150,
   paddingVertical: 10,
-  borderRadius: 22,
+  borderRadius: 30,
   backgroundColor: "#F16023",
   alignItems: 'center',
   
