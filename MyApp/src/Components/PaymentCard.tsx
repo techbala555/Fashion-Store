@@ -1,13 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import ProfileCardIcon from "../../assets/SVG/ProfileCardIcon";
 import RightArrow from "../../assets/SVG/RightArrow";
+import PaymentCardIcon from "../../assets/SVG/ProfileCardIcon";
 
-const ProfileCard = () => {
+
+const PaymentCard = () => {
   return (
     <View style={styles.container}>
-      <ProfileCardIcon/>
-      <Text>Your Profile</Text>
+      <PaymentCardIcon/>
+      <Text>Payment Methods</Text>
       <View style={styles.arrow}>
         <RightArrow />
       </View>
@@ -15,14 +16,14 @@ const ProfileCard = () => {
   );
 };
 
-export default ProfileCard;
+export default PaymentCard;
 
 const styles = StyleSheet.create({
   arrow: {
-    marginLeft: 150,
+    // marginLeft: 15,
   },
   container: {
-    marginTop: 50,
+    // marginTop: 50,
     flexDirection: "row",
     justifyContent: "space-evenly",
     padding: 10,

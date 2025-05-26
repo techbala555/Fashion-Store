@@ -1,8 +1,14 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import Header from '../Components/Header'
-
 import Avatarprofile from '../../assets/SVG/Avatarprofile'
+import ProfileItems from '../Components/ProfileItems'
+import ProfileCardIcon from '../../assets/SVG/ProfileCardIcon'
+import PaymentCardIcon from '../../assets/SVG/PaymentCard'
+import HelpIcon from '../../assets/SVG/HelpIcon'
+import SettingIcon from '../../assets/SVG/SettingIcon'
+import LogoutIcon from '../../assets/SVG/LogoutIcon'
+import Navbar from '../Components/Navbar'
 
 const Profile = () => {
   return (
@@ -10,7 +16,17 @@ const Profile = () => {
       <Header title={'Profile'}
       showHeart={false}/>
   <Avatarprofile/>
-        
+        <View >
+         <ProfileItems title={'Profile'} SvgIcon={ProfileCardIcon} />
+         <ProfileItems title={'Payment Methods'} SvgIcon={PaymentCardIcon} />
+         <ProfileItems title={'Settings'} SvgIcon={SettingIcon} />
+         <ProfileItems title={'Help Center'} SvgIcon={HelpIcon} />
+         <ProfileItems title={'Logout'} SvgIcon={LogoutIcon} />
+        </View>
+
+        <View style={styles.navbar}>
+          <Navbar/>
+        </View>
     </View>
   )
 }
@@ -34,4 +50,7 @@ const styles = StyleSheet.create({
     borderColor:'#ccc',
     borderWidth:1
   },
+  navbar:{
+    marginTop:150
+  }
 })

@@ -1,22 +1,20 @@
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import React from "react";
-import {
-  Text,
-  View,
-  StyleSheet,
-  ImageBackground,
-} from 'react-native';
+import { Text, View, StyleSheet, ImageBackground } from "react-native";
 import { AppModuleParamList } from "../app.navigation";
 import LoginButton from "../Components/LoginButton";
 
-type WelcomeNavigationProp = NativeStackNavigationProp<AppModuleParamList, 'Welcome'>;
+type WelcomeNavigationProp = NativeStackNavigationProp<
+  AppModuleParamList,
+  "Welcome"
+>;
 
 const Welcome = () => {
   const navigation = useNavigation<WelcomeNavigationProp>();
   return (
     <ImageBackground
-      source={require('../../assets/images/GetStartImage.png')}
+      source={require("../../assets/images/GetStartImage.png")}
       style={styles.container}
       resizeMode="cover"
     >
@@ -24,7 +22,7 @@ const Welcome = () => {
         <Text style={styles.text}>Welcome</Text>
 
         <Text style={styles.subtitle}>
-          StyleHub – where fashion meets elegance in{'\n'}
+          StyleHub – where fashion meets elegance in{"\n"}
           every click.
         </Text>
       </View>
@@ -33,13 +31,15 @@ const Welcome = () => {
       <View style={styles.footer}>
         <LoginButton
           style={styles.button}
-          // labelStyle={styles.labeltext}
+          labelStyle={styles.labeltext}
           title="Let’s Get Started"
-          onPress={() => navigation.navigate('Login')} children={""}/>
+          onPress={() => {
+            console.log("Button pressed");
+            navigation.navigate("Login");
+          } } children={""}        />
         <View style={styles.signInContainer}>
           <Text style={styles.signin}>
-            Already Have an Account?{' '}
-            <Text style={styles.link}>Sign In</Text>
+            Already Have an Account? <Text style={styles.link}>Sign In</Text>
           </Text>
         </View>
       </View>
@@ -52,58 +52,58 @@ export default Welcome;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor:'#fff'
+    backgroundColor: "#fff",
   },
   content: {
     marginLeft: 20,
     marginTop: 150,
-    alignItems: 'flex-start',
-    justifyContent: 'center',
+    alignItems: "flex-start",
+    justifyContent: "center",
   },
   text: {
     fontSize: 32,
-    fontWeight: 'bold',
-    color: '#000',
+    fontWeight: "bold",
+    color: "#000",
   },
   subtitle: {
     fontSize: 16,
-    marginTop: 20,
-    color: '#000',
+    marginTop: 10,
+    color: "#000",
     lineHeight: 24,
   },
-  button:{
-    width:325,
-    alignContent:'center',
-    height:50,
-    alignSelf:'center',
-    alignItems:'center',
-    padding:5,
-    borderRadius:30,
-    backgroundColor:'#F16023'
+  button: {
+    width: 325,
+    alignContent: "center",
+    height: 50,
+    alignSelf: "center",
+    alignItems: "center",
+    padding: 5,
+    borderRadius: 30,
+    backgroundColor: "#F16023",
   },
-  labeltext:{
-    fontSize:16,
-    fontWeight:'semibold'
+  labeltext: {
+    fontSize: 16,
+    fontWeight: "semibold",
   },
   footer: {
     flex: 1,
-    justifyContent: 'flex-end', // Pushes the button and sign-in text to the bottom
+    justifyContent: "flex-end", // Pushes the button and sign-in text to the bottom
     paddingHorizontal: 20,
     paddingBottom: 50,
-    alignContent:'center' // Add padding at the bottom for better spacing
+    alignContent: "center", // Add padding at the bottom for better spacing
   },
-  signInContainer:{
-    justifyContent:'center',
-    alignSelf:'center',
-    marginTop:10
+  signInContainer: {
+    justifyContent: "center",
+    alignSelf: "center",
+    marginTop: 10,
   },
   signin: {
     fontSize: 18,
-    fontWeight: '600',
-    color: '#000000',
+    fontWeight: "600",
+    color: "#000000",
   },
   link: {
-    textDecorationLine: 'underline',
+    textDecorationLine: "underline",
     color: "#200BD7",
     fontSize: 18,
     fontWeight: "800",

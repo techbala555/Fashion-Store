@@ -1,13 +1,13 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
-import ProfileCardIcon from "../../assets/SVG/ProfileCardIcon";
 import RightArrow from "../../assets/SVG/RightArrow";
+import HelpIcon from "../../assets/SVG/HelpIcon";
 
-const ProfileCard = () => {
+const HelpCenter = () => {
   return (
     <View style={styles.container}>
-      <ProfileCardIcon/>
-      <Text>Your Profile</Text>
+      <HelpIcon/>
+      <Text>Help Center</Text>
       <View style={styles.arrow}>
         <RightArrow />
       </View>
@@ -15,7 +15,7 @@ const ProfileCard = () => {
   );
 };
 
-export default ProfileCard;
+export default HelpCenter;
 
 const styles = StyleSheet.create({
   arrow: {
