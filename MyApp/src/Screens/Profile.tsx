@@ -51,6 +51,6 @@ const styles = StyleSheet.create({
     borderWidth:1
   },
   navbar:{
-    marginTop:150
+    marginTop:190
   }
 })

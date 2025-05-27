@@ -5,30 +5,22 @@ import CartIcon from '../../assets/SVG/CartIcon';
 import FavrtIcon from '../../assets/SVG/FavrtIcon';
 import ChatIcon from '../../assets/SVG/chatIcon';
 import ProfileIcon from '../../assets/SVG/ProfileIcon';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import type { AppModuleParamList } from "../app.navigation";
 
-import { useNavigation } from '@react-navigation/native';
-import { BottomTabNavigationProp } from '@react-navigation/bottom-tabs';
 
-// Define your bottom tab param list
-type BottomTabParamList = {
-  Home: undefined;
-  Cart: undefined;
-  Favorites: undefined;
-  Chat: undefined;
-  Profile: undefined;
-};
-
-type NavigationProp = BottomTabNavigationProp<BottomTabParamList>;
+type NavigationProp = NativeStackNavigationProp<AppModuleParamList>;
 
 const Navbar = () => {
-  const [active, setActive] = useState("home");
   const navigation = useNavigation<NavigationProp>();
-
-  const icons: { name: string; component: React.FC<{ color: string }>; screen: keyof BottomTabParamList }[] = [
+  const route =useRoute();
+const currentRoute = route.name;
+  const icons: { name: string; component: React.FC<{ color: string }>; screen: keyof AppModuleParamList }[] = [
   { name: "home", component: HomeIcon, screen: "Home" },
-  { name: "cart", component: CartIcon, screen: "Cart" },
-  { name: "fav", component: FavrtIcon, screen: "Favorites" },
-  { name: "chat", component: ChatIcon, screen: "Chat" },
+  { name: "cart", component: CartIcon, screen:'cart'},
+  { name: "fav", component: FavrtIcon, screen:'FavrtProduct' },
+  { name: "chat", component: ChatIcon, screen:'chat' },
   { name: "profile", component: ProfileIcon, screen: "Profile" },
 ];
 
@@ -36,14 +28,13 @@ const Navbar = () => {
   return (
     <View style={styles.container}>
       {icons.map(({ name, component: Icon, screen }) => {
-        const isActive = active === name;
+        const isActive = currentRoute === screen;
 
         return (
           <TouchableOpacity
             key={name}
             style={[styles.iconWrapper, isActive && styles.activeCircle]}
             onPress={() => {
-              setActive(name);
               navigation.navigate(screen);
             }}
           >
@@ -75,6 +66,12 @@ const styles = StyleSheet.create({
     borderRadius: 50,
   },
   activeCircle: {
-    backgroundColor: "#fff",
-  },
+  backgroundColor: "#fff",
+  shadowColor: "#000",
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.3,
+  shadowRadius: 3,
+  elevation: 5, 
+},
+
 });

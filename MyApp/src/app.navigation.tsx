@@ -8,8 +8,11 @@ import otpVerify from "./Screens/otpVerify"
 import thankYou from "./Screens/thankYou"
 import Home from "./Screens/Home"
 import ProductDetails from "./Screens/ProductDetails"
-import BottomTabNavigator from "../src/BottomTabNavigator"
 import CheckOutPage from "./Screens/CheckOutPage"
+import Cart from "./Screens/Cart"
+import FavrtProduct from "./Screens/FavrtProduct"
+import Profile from "./Screens/Profile"
+import Chat from "./Screens/Chat"
 
 
 
@@ -21,8 +24,11 @@ export type AppModuleParamList={
     thankYou:undefined
     Home:undefined
     ProductDetails:undefined
-    BottomTabNavigator:undefined
     CheckOutPage:undefined
+    cart:undefined
+    FavrtProduct:undefined
+    Profile:undefined
+    chat:undefined
 }
 
 const AppModule = createNativeStackNavigator<AppModuleParamList>();
@@ -67,13 +73,24 @@ export function AppNavigation (){
                component={ProductDetails}/>
 
                <AppModule.Screen
-              name="BottomTabNavigator"
-              component={BottomTabNavigator}/>
+              name="cart"
+              component={Cart}/>
 
               <AppModule.Screen
               name="CheckOutPage"
               component={CheckOutPage}/>
 
+              <AppModule.Screen
+              name="FavrtProduct"
+              component={FavrtProduct}/>
+
+              <AppModule.Screen
+              name="Profile"
+              component={Profile}/>
+
+                <AppModule.Screen
+              name="chat"
+              component={Chat}/>
             
             </AppModule.Navigator>
         </NavigationContainer>
