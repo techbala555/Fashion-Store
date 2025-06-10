@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, KeyboardAvoidingView, Platform } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 import { TextInput } from "react-native-paper";
 import LoginButton from "../Components/LoginButton";
 import GoogleLogo from "../../assets/SVG/GoogleLogo";
@@ -8,23 +14,31 @@ import InstagramLogo from "../../assets/SVG/instagramLogo";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { AppModuleParamList } from "../app.navigation";
 import { useNavigation } from "@react-navigation/native";
+import auth from "@react-native-firebase/auth";
+import firestore from "@react-native-firebase/firestore";
 
 const LoginMobile = () => {
-  const [mobile, setMobile] = useState('');
+  const [mobile, setMobile] = useState("");
+
+  // const signInWithPhoneNumber =async () =>{
+  //   try{
+  //     const confrimation =await auth().signInWithPhoneNumber(mobile)
+  //     set
+  //   }
+  // }
 
   const handleMobileChange = (text: string) => {
-    const cleaned = text.replace(/[^0-9]/g, ''); // Allow only numbers
+    const cleaned = text.replace(/[^0-9]/g, ""); // Allow only numbers
     if (cleaned.length <= 10) setMobile(cleaned);
   };
 
-  const navigation = useNavigation<NativeStackNavigationProp<AppModuleParamList,'Verify'>>()
+  const navigation =
+    useNavigation<NativeStackNavigationProp<AppModuleParamList, "Verify">>();
   const handleSendOtp = () => {
-    console.log("Send OTP pressed");
-    // Implement your OTP sending logic here
-    navigation.navigate('Verify')
-    
+    console.log("Send OTP pressed", mobile);
+    navigation.navigate("Verify");
   };
-  
+
   return (
     <KeyboardAvoidingView
       style={styles.container}
@@ -35,7 +49,6 @@ const LoginMobile = () => {
       </Text>
       <Text style={styles.inputlabel}>Enter your mobile number</Text>
       <View style={styles.inputContainer}>
-       
         <TextInput
           placeholder="Enter mobile number"
           mode="flat"
@@ -45,7 +58,7 @@ const LoginMobile = () => {
           keyboardType="number-pad"
           underlineColor="transparent"
           style={styles.input}
-          theme={{ colors: { text: '#000' } }}
+          theme={{ colors: { text: "#000" } }}
         />
         <LoginButton
           title="Send OTP"
@@ -94,26 +107,25 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   header: {
-    width:'100%',
+    width: "100%",
     fontSize: 24,
     fontWeight: "600",
     color: "#000",
-    textAlign: 'left',
-    letterSpacing:0.5
+    textAlign: "left",
+    letterSpacing: 0.5,
   },
   inputContainer: {
     width: "100%",
     alignItems: "center",
-    marginBottom:40,
-    flexDirection:'column' 
+    marginBottom: 40,
+    flexDirection: "column",
   },
-  inputlabel:{
-    fontSize:16,
-    fontWeight:500,
-    alignSelf:'flex-start',
-    marginTop:100,
-    color:'#333'
-   
+  inputlabel: {
+    fontSize: 16,
+    fontWeight: 500,
+    alignSelf: "flex-start",
+    marginTop: 100,
+    color: "#333",
   },
   input: {
     width: "100%",
@@ -127,7 +139,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     backgroundColor: "#fff",
     paddingHorizontal: 20,
-    marginTop:20
+    marginTop: 20,
   },
   button: {
     width: "100%",
