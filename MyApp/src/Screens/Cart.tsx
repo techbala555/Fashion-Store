@@ -21,7 +21,8 @@ const Cart = () => {
       <View style={styles.cartlist}>
         <CartList/>
          <CartList/>
-      </View>
+         <CartList/>
+       </View>
 
 
       <LoginButton mode="contained" title={"Continue"} onPress={() => navigation.navigate("CheckOutPage")} style={styles.button} children={""}/>
@@ -44,39 +45,34 @@ const styles = StyleSheet.create({
   header:{
     flexDirection:'row',
     alignItems:'center',
-    marginLeft:30,
-    position:'absolute',
-    top:80    
+    
   },
   cartlist:{
-    position:'absolute',
-    top:140,
-    left:35,
-    gap:30
+    padding:20,
+    gap:16,
+    justifyContent:'center',
+    alignSelf:'center'
   },
   button:{
-    width:325,
+    width:"90%",
     alignContent:'center',
-    height:50,
+    // height:50,
     alignSelf:'center',
     alignItems:'center',
     padding:5,
     borderRadius:30,
     backgroundColor:'#F16023',
-    position:'absolute',
-    top:640
+    marginBottom:20
   },
   button1:{
-    width:325,
+    width:"90%",
     alignContent:'center',
-    height:50,
+    // height:50,
     alignSelf:'center',
     alignItems:'center',
     padding:5,
     borderRadius:30,
     backgroundColor:'#fff',
-    position:'absolute',
-    top:700,
     borderColor:'#F16023',
     borderWidth:2
   },

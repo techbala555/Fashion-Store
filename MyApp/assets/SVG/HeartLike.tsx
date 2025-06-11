@@ -1,21 +1,15 @@
 import * as React from "react";
 import Svg, { Path } from "react-native-svg";
 
-const HeartLike = ({ color = "red", size = 24, ...props }) => (
-  <Svg
-    // xmlns="http://www.w3.org/2000/svg"
-    width={size}
-    height={size}
-    fill="none"
-    viewBox="0 0 24 24"
-    {...props}
-  >
+const HeartLike = ({ color = "gray", size = 24 }) => (
+  <Svg width={size} height={size} viewBox="0 0 24 24">
     <Path
-      stroke={color}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M7.5 4A5.5 5.5 0 0 0 2 9.5C2 15 8.5 20 12 21.163 15.5 20 22 15 22 9.5a5.5 5.5 0 0 0-10-3.163A5.5 5.5 0 0 0 7.5 4"
+      fill={color}
+      d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 
+         2 5.42 4.42 3 7.5 3c1.74 0 3.41 0.81 4.5 2.09 
+         C13.09 3.81 14.76 3 16.5 3 
+         19.58 3 22 5.42 22 8.5 
+         c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
     />
   </Svg>
 );

@@ -102,7 +102,7 @@ const styles=StyleSheet.create({
         flex: 1,
         backgroundColor: "#fff",
         paddingHorizontal: 20,
-        paddingTop: 100,
+        paddingTop: 50,
         alignItems: "center",
       },
     header: {
@@ -116,7 +116,7 @@ const styles=StyleSheet.create({
         fontSize:16,
         fontWeight: "500",
         color: "#000",
-        paddingTop: 100,
+        paddingTop: 30,
         alignSelf:'center',      
       },
       mobtext:{
@@ -147,8 +147,8 @@ const styles=StyleSheet.create({
         textAlign:'center'
     },
     button: {
-        width: 320,
-        height: 50,
+        width: 310,
+        height: 40,
         borderRadius: 30,
         backgroundColor: "#F16023",
         justifyContent: "center",

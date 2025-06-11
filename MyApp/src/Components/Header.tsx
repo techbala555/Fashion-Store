@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import BackArrow from "../../assets/SVG/BackArrow";
 import HeartLike from "../../assets/SVG/HeartLike";
@@ -8,16 +8,19 @@ interface HeaderProps {
   title: string;
   showBack?: boolean;
   showHeart?: boolean;
-  onHeartPress?: () => void;
 }
 
 const Header: React.FC<HeaderProps> = ({
   title,
   showBack = true,
   showHeart = true,
-  onHeartPress,
 }) => {
   const navigation = useNavigation();
+  const [liked, setLiked] = useState(false); // ✅ Keep it inside the component
+
+  const handleHeartPress = () => {
+    setLiked(!liked); // ✅ Toggle on press only
+  };
 
   return (
     <View style={styles.container}>
@@ -27,7 +30,7 @@ const Header: React.FC<HeaderProps> = ({
           <BackArrow />
         </TouchableOpacity>
       ) : (
-        <View style={{ width: 24 }} /> // Placeholder to align center title
+        <View style={{ width: 24 }} />
       )}
 
       {/* Title */}
@@ -35,17 +38,18 @@ const Header: React.FC<HeaderProps> = ({
 
       {/* Heart Icon */}
       {showHeart ? (
-        <TouchableOpacity onPress={onHeartPress}>
-          <HeartLike />
+        <TouchableOpacity onPress={handleHeartPress}>
+          <HeartLike color={liked ? "red" : "#ccc"} />
         </TouchableOpacity>
       ) : (
-        <View style={{ width: 24 }} /> // Placeholder if heart not shown
+        <View style={{ width: 24 }} />
       )}
     </View>
   );
 };
 
 export default Header;
+
 const styles = StyleSheet.create({
   container: {
     height: 50,
@@ -54,7 +58,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     justifyContent: 'space-between',
-    marginTop: 60,
+    marginTop: 10,
   },
   title: {
     fontSize: 18,

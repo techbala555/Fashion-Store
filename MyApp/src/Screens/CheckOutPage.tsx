@@ -1,88 +1,101 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import BackArrow from '../../assets/SVG/BackArrow'
-import LoginButton from '../Components/LoginButton'
-import Header from '../Components/Header'
+import { StyleSheet, Text, View, Dimensions, ScrollView } from 'react-native';
+import React from 'react';
+import LoginButton from '../Components/LoginButton';
+import Header from '../Components/Header';
+
+const { width } = Dimensions.get('window');
 
 const CheckOutPage = () => {
   return (
     <View style={styles.container}>
-      <Header
-      title='Checkout'
-      showHeart={false}/>
+      <Header title="Checkout" showHeart={false} />
 
-      <View style={styles.promocontainer}>
-        <Text style={{marginLeft:10 ,fontSize:14,fontWeight:'400',color:'#888'}}>Promo Code</Text>
-        <LoginButton title={'Apply'} onPress={function (): void {
-          throw new Error('Function not implemented.')
-        } } children={''} style={styles.applybutton}/>
-      </View>
+      <ScrollView contentContainerStyle={styles.scrollContent} showsVerticalScrollIndicator={false}>
+        {/* Promo Code Section */}
+        <View style={styles.promoContainer}>
+          <Text style={styles.promoLabel}>Promo Code</Text>
+          <LoginButton
+            title="Apply"
+            onPress={() => {}}
+            style={styles.applyButton}
+            children={''}
+          />
+        </View>
 
-<View style={styles.totalcontainer}>
-      <View style={styles.row}>
-        <Text style={styles.label}>Sub-Total</Text>
-        <Text style={styles.value}>$407.97</Text>
-      </View>
-      <View style={styles.row}>
-        <Text style={styles.label}>Delivery Fee</Text>
-        <Text style={styles.value}>$10.00</Text>
-      </View>
-      <View style={styles.row}>
-        <Text style={styles.label}>Discount</Text>
-        <Text style={styles.value}>- $30.00</Text>
-      </View>
-      <View style={styles.row}>
-        <Text style={styles.totalLabel}>Total</Text>
-        <Text style={styles.totalValue}>$417.97</Text>
-      </View>
+        {/* Total Section */}
+        <View style={styles.totalContainer}>
+          <View style={styles.row}>
+            <Text style={styles.label}>Sub-Total</Text>
+            <Text style={styles.value}>$407.97</Text>
+          </View>
+          <View style={styles.row}>
+            <Text style={styles.label}>Delivery Fee</Text>
+            <Text style={styles.value}>$10.00</Text>
+          </View>
+          <View style={styles.row}>
+            <Text style={styles.label}>Discount</Text>
+            <Text style={styles.value}>- $30.00</Text>
+          </View>
+          <View style={styles.row}>
+            <Text style={styles.totalLabel}>Total</Text>
+            <Text style={styles.totalValue}>$417.97</Text>
+          </View>
+        </View>
+
+        {/* Checkout Button */}
+        <LoginButton
+          title="Proceed to Checkout"
+          onPress={() => {}}
+          style={styles.checkoutButton}
+          children={''}
+        />
+      </ScrollView>
     </View>
+  );
+};
 
-    <LoginButton title={'Proceed to Checkout'} onPress={function (): void {
-        throw new Error('Function not implemented.')
-      } } children={''} style={styles.button}/>
-    </View>
-  )
-}
-
-export default CheckOutPage
-
+export default CheckOutPage;
 const styles = StyleSheet.create({
-   container: {
+  container: {
     flex: 1,
-    backgroundColor: "#fff",   
+    backgroundColor: "#fff",
   },
-  header:{
-    flexDirection:'row',
-    alignItems:'center',
-    marginLeft:30,
-    position:'absolute',
-    top:80    
+  scrollContent: {
+    padding: 20,
+    paddingBottom: 40,
   },
-  promocontainer:{
-    borderWidth:2,
-    width:313,
-    height:55,
-    borderRadius:30,
-    position:'absolute',
-    top:130,
-    alignSelf:'center',
-    justifyContent:'space-between',
-    borderColor:'#ccc',
-    flexDirection:'row',
-    alignItems:'center'
+  promoContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    borderWidth: 1.5,
+    borderColor: '#ccc',
+    borderRadius: 30,
+    height: 55,
+    paddingHorizontal: 15,
+    marginTop: 20,
   },
-  applybutton:{
-    width:90,
-    height:40,
-    borderRadius:30,
-    alignSelf:'center',
-    marginRight:5,
-    backgroundColor:'#F16023'
+  promoLabel: {
+    fontSize: 14,
+    fontWeight: '400',
+    color: '#888',
+  },
+  applyButton: {
+    width: 90,
+    height: 40,
+    borderRadius: 30,
+    backgroundColor: '#F16023',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  totalContainer: {
+    marginTop: 30,
+    paddingHorizontal: 5,
   },
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginBottom: 10,
+    marginBottom: 12,
   },
   label: {
     fontSize: 16,
@@ -102,16 +115,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#000',
   },
-  totalcontainer:{
-    padding:30,
-    marginTop:70
+  checkoutButton: {
+    marginTop: 40,
+    width: width - 40,
+    height: 50,
+    borderRadius: 30,
+    backgroundColor: '#F16023',
+    alignSelf: 'center',
+    justifyContent: 'center',
   },
-  button:{
-    width:325,
-    height:50,
-    alignSelf:'center',
-    borderRadius:30,
-    justifyContent:'center',
-    backgroundColor:'#F16023'
-    }
-})
+});

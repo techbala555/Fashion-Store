@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'; 
 import React, { useState } from 'react';
 import { launchImageLibrary } from 'react-native-image-picker';
-import EditIcon from '../SVG/editIcon'; // Ensure this is a proper React Component (SVG)
+import EditIcon from '../SVG/editIcon'; // Make sure this is a valid SVG React component
 
 const AvatarProfile = () => {
   const [imageUri, setImageUri] = useState<string | null>(null);
@@ -17,17 +17,21 @@ const AvatarProfile = () => {
 
   return (
     <View style={styles.container}>
-      <Image
-        source={
-          imageUri
-            ? { uri: imageUri }
-            : require('../../assets/images/Brown Jacket.png')
-        }
-        style={styles.avatar}
-      />
-      <TouchableOpacity style={styles.editIcon} onPress={pickImage}>
-        <EditIcon width={20} height={20} fill="#fff" />
-      </TouchableOpacity>
+      <View style={styles.avatarWrapper}>
+        <View style={styles.avatarBackground}>
+          <Image
+            source={
+              imageUri
+                ? { uri: imageUri }
+                : require('../../assets/images/Brown Jacket.png')
+            }
+            style={styles.avatar}
+          />
+        </View>
+        <TouchableOpacity style={styles.editIcon} onPress={pickImage}>
+          <EditIcon width={20} height={20} fill="#fff" />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -37,24 +41,35 @@ export default AvatarProfile;
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    marginTop: 40,
+   
   },
-  avatar: {
+    avatarBackground: {
+    backgroundColor: '#EEE',
+    borderRadius: 50,
+    overflow: 'hidden',
+    width: '100%',
+    height: '100%',
+  },
+  avatarWrapper: {
+    position: 'relative',
     width: 100,
     height: 100,
+  },
+  avatar: {
+    width: '100%',
+    height: '100%',
     borderRadius: 50,
+    backgroundColor: '#888',
     resizeMode:'contain',
-    backgroundColor:'#888'
   },
   editIcon: {
     position: 'absolute',
     bottom: 0,
-    right:150,
+    right: 0,
     backgroundColor: '#F16023',
     padding: 6,
     borderRadius: 20,
-    borderWidth:2,
-    borderColor:'#fff',
-    
+    borderWidth: 2,
+    borderColor: '#fff',
   },
 });

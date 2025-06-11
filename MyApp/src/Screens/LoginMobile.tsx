@@ -5,6 +5,7 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   Platform,
+  StatusBar,
 } from "react-native";
 import { TextInput } from "react-native-paper";
 import LoginButton from "../Components/LoginButton";
@@ -40,6 +41,8 @@ const LoginMobile = () => {
   };
 
   return (
+
+    <><StatusBar barStyle="dark-content"   />
     <KeyboardAvoidingView
       style={styles.container}
       behavior={Platform.OS === "ios" ? "padding" : undefined}
@@ -58,14 +61,12 @@ const LoginMobile = () => {
           keyboardType="number-pad"
           underlineColor="transparent"
           style={styles.input}
-          theme={{ colors: { text: "#000" } }}
-        />
+           />
         <LoginButton
           title="Send OTP"
           style={styles.button}
           onPress={handleSendOtp}
-          children={undefined}
-        />
+          children={undefined} />
       </View>
 
       <View style={styles.orContainer}>
@@ -92,7 +93,7 @@ const LoginMobile = () => {
           <Text style={styles.link}>Terms & Privacy Policy</Text>.
         </Text>
       </View>
-    </KeyboardAvoidingView>
+    </KeyboardAvoidingView></>
   );
 };
 
@@ -143,7 +144,7 @@ const styles = StyleSheet.create({
   },
   button: {
     width: "100%",
-    height: 50,
+    height: 40,
     borderRadius: 30,
     backgroundColor: "#F16023",
     justifyContent: "center",

@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   },
   content: {
     marginLeft: 20,
-    marginTop: 150,
+    marginTop: 100,
     alignItems: "flex-start",
     justifyContent: "center",
   },
@@ -74,10 +74,10 @@ const styles = StyleSheet.create({
   button: {
     width: 325,
     alignContent: "center",
-    height: 50,
+    height: 40,
     alignSelf: "center",
     alignItems: "center",
-    padding: 5,
+    // padding: 5,
     borderRadius: 30,
     backgroundColor: "#F16023",
   },
@@ -87,25 +87,24 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 1,
-    justifyContent: "flex-end", // Pushes the button and sign-in text to the bottom
+    justifyContent: "flex-end", 
     paddingHorizontal: 20,
     paddingBottom: 50,
-    alignContent: "center", // Add padding at the bottom for better spacing
+    alignContent: "center",
   },
   signInContainer: {
     justifyContent: "center",
     alignSelf: "center",
-    marginTop: 10,
-  },
+   },
   signin: {
-    fontSize: 18,
-    fontWeight: "600",
+    fontSize: 14,
+    fontWeight: "500",
     color: "#000000",
   },
   link: {
     textDecorationLine: "underline",
     color: "#200BD7",
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: "800",
   },
 });
