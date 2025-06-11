@@ -2,12 +2,13 @@
   "expo": {
     "name": "my-app",
     "slug": "my-app",
+    "plugins": ["@react-native-firebase/app", "@react-native-firebase/auth"],
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./MyApp/assets/images/splash-icon.png",  
+      "image": "./MyApp/assets/images/splash-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -15,12 +16,19 @@
       "supportsTablet": true
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
-        "icon": "./assets/images/app-icon.png" 
-      }
+        "icon": "./assets/images/app-icon.png"
+      },
+      "package": "com.balakrishnan2001.myapp"
     },
     "web": {
-      "favicon": "./assets/images/favicon.png" 
+      "favicon": "./assets/images/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "08191ee3-467e-4a73-a07a-4e82bdff8f09"
+      }
     }
   }
 }

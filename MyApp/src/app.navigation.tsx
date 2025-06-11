@@ -13,6 +13,7 @@ import Cart from "./Screens/Cart"
 import FavrtProduct from "./Screens/FavrtProduct"
 import Profile from "./Screens/Profile"
 import Chat from "./Screens/Chat"
+import { FirebaseAuthTypes } from "@react-native-firebase/auth"
 
 
 
@@ -20,7 +21,7 @@ export type AppModuleParamList={
     Splash:undefined
     Welcome:undefined    
     Login:undefined
-    Verify:undefined
+    Verify:{confirm:FirebaseAuthTypes.ConfirmationResult};
     thankYou:undefined
     Home:undefined
     ProductDetails:undefined
