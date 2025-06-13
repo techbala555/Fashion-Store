@@ -88,10 +88,10 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: "#F16023",
-    paddingHorizontal: 16,
+    paddingHorizontal: 15,
     paddingVertical: 8,
     borderRadius: 8,
-    marginHorizontal: 5,
+    // marginHorizontal: 5,
   },
 
   buttonText: {
