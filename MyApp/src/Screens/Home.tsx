@@ -13,11 +13,11 @@ import BrandLogo from "../../assets/SVG/icons/BrandLogo";
 import SearchIcon from "../../assets/SVG/SearchIcon";
 import BagIcon from "../../assets/SVG/BagIcon";
 import NotificationIcon from "../../assets/SVG/BagIcon"; 
-import LoginButton from "../Components/LoginButton";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { AppModuleParamList } from "../app.navigation";
 import { useNavigation } from "@react-navigation/native";
 import Navbar from "../Components/Navbar";
+import axios, { Axios } from "axios";
 
 const SCREEN_WIDTH = Dimensions.get("screen").width;
 
@@ -25,122 +25,55 @@ type ProductDetailsNavigationProp = NativeStackNavigationProp<
   AppModuleParamList,
   "ProductDetails"
 >;
+const UNSPLASH_ACCESS_KEY = "VpFwe50tpQglnhvr_TiOZY95_XhOV2JJdrbVih7lQIA";
+export const fetchFashionImages = async (query = "Fashion Clothes")=>{
+  const response =await axios.get(
+    `https://api.unsplash.com/search/photos`,
+    {
+      params:{
+        query,
+        per_page:30,
+        orientation:"portrait",
+      },
+      headers:{
+         Authorization: `Client-ID ${UNSPLASH_ACCESS_KEY}`,
+      }
+    }
+  );
+  return response.data.results;
+}
 
 const Home = () => {
   const navigation = useNavigation<ProductDetailsNavigationProp>();
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [fashionProducts,setFashionProducts]= useState<any[]>([]);
 
-  const fashionProducts = [
-    {
-      id: "1",
-      name: "Brown Jacket",
-      price: "$1.85",
-      image: require("../../assets/images/Brown Jacket.png"),
-    },
-    {
-      id: "2",
-      name: "Floral Dress",
-      price: "$2.5",
-      image: require("../../assets/images/Floral Dress.png"),
-    },
-    {
-      id: "3",
-      name: "Yellow Jacket",
-      price: "$2.5",
-      image: require("../../assets/images/yellow jacket.png"),
-    },
-    // {
-    //   id: "1",
-    //   name: "Brown Jacket",
-    //   price: "$1.85",
-    //   image: require("../../assets/images/Brown Jacket.png"),
-    // },
-    // {
-    //   id: "2",
-    //   name: "Floral Dress",
-    //   price: "$2.5",
-    //   image: require("../../assets/images/Floral Dress.png"),
-    // },
-    // {
-    //   id: "3",
-    //   name: "Yellow Jacket",
-    //   price: "$2.5",
-    //   image: require("../../assets/images/yellow jacket.png"),
-    // },
-    // {
-    //   id: "1",
-    //   name: "Brown Jacket",
-    //   price: "$1.85",
-    //   image: require("../../assets/images/Brown Jacket.png"),
-    // },
-    // {
-    //   id: "2",
-    //   name: "Floral Dress",
-    //   price: "$2.5",
-    //   image: require("../../assets/images/Floral Dress.png"),
-    // },
-    // {
-    //   id: "3",
-    //   name: "Yellow Jacket",
-    //   price: "$2.5",
-    //   image: require("../../assets/images/yellow jacket.png"),
-    // },
-    // {
-    //   id: "1",
-    //   name: "Brown Jacket",
-    //   price: "$1.85",
-    //   image: require("../../assets/images/Brown Jacket.png"),
-    // },
-    // {
-    //   id: "2",
-    //   name: "Floral Dress",
-    //   price: "$2.5",
-    //   image: require("../../assets/images/Floral Dress.png"),
-    // },
-    // {
-    //   id: "3",
-    //   name: "Yellow Jacket",
-    //   price: "$2.5",
-    //   image: require("../../assets/images/yellow jacket.png"),
-    // },
-    // {
-    //   id: "1",
-    //   name: "Brown Jacket",
-    //   price: "$1.85",
-    //   image: require("../../assets/images/Brown Jacket.png"),
-    // },
-    // {
-    //   id: "2",
-    //   name: "Floral Dress",
-    //   price: "$2.5",
-    //   image: require("../../assets/images/Floral Dress.png"),
-    // },
-    // {
-    //   id: "3",
-    //   name: "Yellow Jacket",
-    //   price: "$2.5",
-    //   image: require("../../assets/images/yellow jacket.png"),
-    // },
-    // {
-    //   id: "1",
-    //   name: "Brown Jacket",
-    //   price: "$1.85",
-    //   image: require("../../assets/images/Brown Jacket.png"),
-    // },
-    // {
-    //   id: "2",
-    //   name: "Floral Dress",
-    //   price: "$2.5",
-    //   image: require("../../assets/images/Floral Dress.png"),
-    // },
-    // {
-    //   id: "3",
-    //   name: "Yellow Jacket",
-    //   price: "$2.5",
-    //   image: require("../../assets/images/yellow jacket.png"),
-    // },
-  ];
+ useEffect(()=>{
+const loadImages = async () => {
+  try {
+    const results = await fetchFashionImages();
+
+    
+    const formatted = results.map((item: any) => {
+      const randomPrice = `$${(Math.random() * 10 + 1).toFixed(2)}`;
+      return {
+        id: item.id,
+        name: item.alt_description || "Fashion Item",
+        price: randomPrice, // fixed per item
+        image: { uri: item.urls.small },
+      };
+    });
+      setFashionProducts(formatted);
+    }catch(error){
+      console.error("Error loading:",error);      
+    }
+  };
+  loadImages();
+ },[])
+
+
+
 const scrollRef = useRef<ScrollView>(null);
 useEffect(() => {
   const interval = setInterval(() => {
