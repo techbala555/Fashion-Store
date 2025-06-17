@@ -199,7 +199,12 @@ useEffect(() => {
         renderItem={({ item }) => (
           <TouchableOpacity
             style={styles.card}
-            onPress={() => navigation.navigate("ProductDetails")}
+            onPress={() =>
+  navigation.navigate("ProductDetails", {
+    product: item,
+  })
+}
+
           >
             <Image source={item.image} style={styles.image} />
             <Text style={styles.name}>{item.name}</Text>

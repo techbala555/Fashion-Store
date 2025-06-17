@@ -46,6 +46,7 @@ const LoginButton: React.FC<LoginButtonProps> = ({
 
   return (
     <Button
+    key={title}
       mode={getMode()}
       onPress={onPress}
       style={combinedButtonStyle}

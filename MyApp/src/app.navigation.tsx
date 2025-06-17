@@ -25,9 +25,30 @@ export type AppModuleParamList={
     Verify:{confirm:FirebaseAuthTypes.ConfirmationResult};
     thankYou:undefined
     Home:undefined
-    ProductDetails:undefined
-    CheckOutPage:undefined
-    cart:undefined
+    ProductDetails:{
+        product:{
+            id:string;
+            name:string;
+            price:string;
+            image:{uri:string};
+        }
+    }
+    CheckOutPage:{
+        product:{
+            id:string;
+            name:string;
+            price:string;
+            image:{uri:string};
+        }
+    }
+    cart:{
+        product:{
+            id:string;
+            name:string;
+            price:string;
+            image:{uri:string};
+        }
+    }
     FavrtProduct:undefined
     Profile:undefined
     chat:undefined

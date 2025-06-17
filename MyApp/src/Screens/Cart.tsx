@@ -1,40 +1,53 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import CartList from "../Components/CartList";
-import BackArrow from "../../assets/SVG/BackArrow";
 import LoginButton from "../Components/LoginButton";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { AppModuleParamList } from "../app.navigation";
 import { useNavigation } from "@react-navigation/native";
 import Header from "../Components/Header";
+import { useCart } from "../context/CartContext"; 
 
-type CartNavigationProp = NativeStackNavigationProp<AppModuleParamList,"CheckOutPage">
+type CartNavigationProp = NativeStackNavigationProp<AppModuleParamList, "CheckOutPage">;
+
 const Cart = () => {
-  const navigation =useNavigation<CartNavigationProp>()
+  const navigation = useNavigation<CartNavigationProp>();
+  const { cartItems, clearCart } = useCart(); 
+
   return (
     <View style={styles.container}>
-      <Header
-      title='My Cart'
-      showHeart={false}/>
-
+      <Header title="My Cart" showHeart={false} />
 
       <View style={styles.cartlist}>
-        <CartList/>
-         <CartList/>
-         <CartList/>
-       </View>
+        {cartItems.length === 0 ? (
+          <Text style={{ textAlign: "center", fontSize: 18, marginTop: 20 }}>Your cart is empty</Text>
+        ) : (
+          cartItems.map((item, index) => <CartList key={index} product={item} />)
+        )}
+      </View>
 
+      {cartItems.length > 0 && (
+        <>
+          <LoginButton
+            mode="contained"
+            title={"Continue"}
+            onPress={() => navigation.navigate("CheckOutPage")}
+            style={styles.button} children={""}          />
 
-      <LoginButton mode="contained" title={"Continue"} onPress={() => navigation.navigate("CheckOutPage")} style={styles.button} children={""}/>
-     
-      <LoginButton mode="outlined" title={"Remove all Items"} onPress={function (): void {
-        throw new Error("Function not implemented.");
-      } } children={""} style={styles.button1} labelStyle={styles.buttonTitle}/>
+          <LoginButton
+            mode="outlined"
+            title={"Remove all Items"}
+            onPress={clearCart}
+            style={styles.button1}
+            labelStyle={styles.buttonTitle} children={""}          />
+        </>
+      )}
     </View>
   );
 };
 
 export default Cart;
+
 
 const styles = StyleSheet.create({
   container: {

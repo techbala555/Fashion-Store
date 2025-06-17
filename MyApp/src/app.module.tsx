@@ -1,9 +1,12 @@
 import React from "react";
 import { AppNavigation } from "./app.navigation";
+import { CartProvider } from "./context/CartContext";
 
 function App(){
     return(
-        <AppNavigation></AppNavigation>
+      <CartProvider>
+        <AppNavigation/>
+      </CartProvider>
     )
 }
 export {App}

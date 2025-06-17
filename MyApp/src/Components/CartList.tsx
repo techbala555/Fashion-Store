@@ -1,54 +1,38 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  Button,
-  TouchableOpacity,
-} from "react-native";
-import React, { useState } from "react";
+import React, { useContext, useState } from 'react';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { ProductType,CartContext} from '../context/CartContext'; // ✅ Make sure this type is exported
 
-const CartList = () => {
-  const [count, setCount] = useState(0);
+const CartList = ({ product }: { product: ProductType }) => {
+  const [count, setCount] = useState(1); // Start with 1 item
+  const {removeFromCart} = useContext(CartContext)
 
-  const increament = () => {
-    setCount(count + 1);
-  };
-  const decreament = () => {
-    setCount(count - 1);
+  const increment = () => setCount((prev) => prev + 1);
+  const decrement = () => {
+    if (count <= 1){
+      removeFromCart(product.id);
+    } else{
+      setCount((prev) => prev - 1);
+    }
   };
 
   return (
-    <View style={styles.conatiner}>
-      <Image
-        source={require("../../assets/images/Brown Jacket.png")}
-        style={styles.Imgsize}
-      />
-      <View style={styles.textcontainer}>
-        <Text style={{ fontSize: 16, color: "#000", fontWeight: "600" }}>
-          Brown jacket
-        </Text>
-        <Text
-          style={{
-            fontSize: 15,
-            color: "#000",
-            fontWeight: "600",
-            opacity: 0.5,
-          }}
-        >
-          Size:XL
-        </Text>
-        <Text style={{ fontSize: 16, color: "#000", fontWeight: "600" }}>
-          $83.97
-        </Text>
+    <View style={styles.container}>
+      <Image source={product.image} style={styles.image} />
+      
+      <View style={styles.textContainer}>
+        <Text style={styles.title}>{product.name}</Text>
+        <Text style={styles.size}>Size: XL</Text> 
+        <Text style={styles.price}>{product.price}</Text>
       </View>
+
       <View style={styles.counterContainer}>
-        <TouchableOpacity style={styles.button} onPress={decreament}>
+        <TouchableOpacity style={styles.button} onPress={decrement}>
           <Text style={styles.buttonText}>-</Text>
         </TouchableOpacity>
 
         <Text style={styles.countText}>{count}</Text>
-        <TouchableOpacity style={styles.button} onPress={increament}>
+
+        <TouchableOpacity style={styles.button} onPress={increment}>
           <Text style={styles.buttonText}>+</Text>
         </TouchableOpacity>
       </View>
@@ -57,47 +41,64 @@ const CartList = () => {
 };
 
 export default CartList;
-
 const styles = StyleSheet.create({
-  Imgsize: {
+  container: {
+    flexDirection: 'row',
+    width:"100%",
+    gap: 10,
+    alignItems: 'center',
+    backgroundColor: '#f8f8f8',
+    padding: 10,
+    borderRadius: 10,
+    marginVertical: 5,
+  },
+  image: {
     width: 100,
     height: 100,
     borderRadius: 12,
-    justifyContent: "center",
-    resizeMode: "contain",
-    backgroundColor: "#8F4226",
+    // backgroundColor: '#8F4226',
+    resizeMode: 'contain',
   },
-  textcontainer: {
-    flexDirection: "column",
-    gap: 10,
+  textContainer: {
+    flex: 1,
+    gap: 8,
   },
-  conatiner: {
-    flexDirection: "row",
-    gap: 10,
-    alignItems: "center",
+  title: {
+    fontSize: 16,
+    color: '#000',
+    fontWeight: '600',
+  },
+  size: {
+    fontSize: 15,
+    color: '#000',
+    fontWeight: '600',
+    opacity: 0.5,
+  },
+  price: {
+    fontSize: 16,
+    color: '#000',
+    fontWeight: '600',
   },
   counterContainer: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: 10,
   },
   countText: {
     fontSize: 18,
-    textAlign: "center",
+    textAlign: 'center',
     marginBottom: 4,
   },
   button: {
-    backgroundColor: "#F16023",
+    backgroundColor: '#F16023',
     paddingHorizontal: 15,
     paddingVertical: 8,
     borderRadius: 8,
-    // marginHorizontal: 5,
   },
-
   buttonText: {
-    color: "white",
+    color: 'white',
     fontSize: 16,
-    fontWeight: "bold",
-    textAlign: "center",
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
