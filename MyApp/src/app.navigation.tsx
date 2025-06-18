@@ -15,6 +15,7 @@ import Profile from "./Screens/Profile"
 import Chat from "./Screens/Chat"
 import { FirebaseAuthTypes } from "@react-native-firebase/auth"
 import BottomTabNavigator from "./BottomTabNavigator"
+import ShippingAddress from "./Screens/ShippingAddress"
 
 
 
@@ -53,6 +54,7 @@ export type AppModuleParamList={
     Profile:undefined
     chat:undefined
     MainTabs:undefined
+    ShippingAddress:undefined
 }
 
 const AppModule = createNativeStackNavigator<AppModuleParamList>();
@@ -115,9 +117,15 @@ export function AppNavigation (){
                 <AppModule.Screen
               name="chat"
               component={Chat}/>
+
               <AppModule.Screen
                 name="MainTabs"
                 component={BottomTabNavigator}
+            />
+
+            <AppModule.Screen
+            name="ShippingAddress"
+            component={ShippingAddress}
             />
             
             </AppModule.Navigator>

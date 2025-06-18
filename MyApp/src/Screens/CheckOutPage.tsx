@@ -2,10 +2,16 @@ import { StyleSheet, Text, View, Dimensions, ScrollView } from 'react-native';
 import React from 'react';
 import LoginButton from '../Components/LoginButton';
 import Header from '../Components/Header';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { AppModuleParamList } from '../app.navigation';
+import { useNavigation } from '@react-navigation/native';
 
 const { width } = Dimensions.get('window');
 
+type CheckoutNavigationProp = NativeStackNavigationProp<AppModuleParamList,"ShippingAddress">;
+
 const CheckOutPage = () => {
+  const navigation = useNavigation<CheckoutNavigationProp>();
   return (
     <View style={styles.container}>
       <Header title="Checkout" showHeart={false} />
@@ -45,11 +51,14 @@ const CheckOutPage = () => {
         {/* Checkout Button */}
         <LoginButton
           title="Proceed to Checkout"
-          onPress={() => {}}
+          onPress={() => {navigation.navigate("ShippingAddress")}}
           style={styles.checkoutButton}
           children={''}
         />
+       
       </ScrollView>
+  
+    
     </View>
   );
 };

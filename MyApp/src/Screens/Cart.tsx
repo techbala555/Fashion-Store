@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import CartList from "../Components/CartList";
 import LoginButton from "../Components/LoginButton";
@@ -17,6 +17,7 @@ const Cart = () => {
   return (
     <View style={styles.container}>
       <Header title="My Cart" showHeart={false} />
+      <ScrollView>
 
       <View style={styles.cartlist}>
         {cartItems.length === 0 ? (
@@ -25,9 +26,10 @@ const Cart = () => {
           cartItems.map((item, index) => <CartList key={index} product={item} />)
         )}
       </View>
-
+</ScrollView>
       {cartItems.length > 0 && (
-        <>
+        <View style=
+        {{padding:10,}}>
           <LoginButton
             mode="contained"
             title={"Continue"}
@@ -40,7 +42,7 @@ const Cart = () => {
             onPress={clearCart}
             style={styles.button1}
             labelStyle={styles.buttonTitle} children={""}          />
-        </>
+        </View>
       )}
     </View>
   );
@@ -72,7 +74,7 @@ const styles = StyleSheet.create({
     // height:50,
     alignSelf:'center',
     alignItems:'center',
-    padding:5,
+    // padding:5,
     borderRadius:30,
     backgroundColor:'#F16023',
     marginBottom:20
@@ -83,7 +85,7 @@ const styles = StyleSheet.create({
     // height:50,
     alignSelf:'center',
     alignItems:'center',
-    padding:5,
+    // padding:5,
     borderRadius:30,
     backgroundColor:'#fff',
     borderColor:'#F16023',
