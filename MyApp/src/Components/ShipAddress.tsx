@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native';
 import React from 'react';
 import LoginButton from './LoginButton';
-import LocationIcon from '../../assets/SVG/locationIcon'
+import LocationIcon from '../../assets/SVG/LocationIcon';
 
 const ShippingAddress = () => {
   return (
