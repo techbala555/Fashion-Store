@@ -14,7 +14,7 @@ const Welcome = () => {
   const navigation = useNavigation<WelcomeNavigationProp>();
   return (
     <ImageBackground
-      source={require("../../assets/images/GetStartImage.png")}
+      source={require("../../assets/images/GetStartImage.jpg")}
       style={styles.container}
       resizeMode="cover"
     >

@@ -1,8 +1,12 @@
 {
   "expo": {
-    "name": "my-app",
-    "slug": "my-app",
-    "plugins": ["@react-native-firebase/app", "@react-native-firebase/auth"],
+    "name": "Fashion Store",
+    "slug": "Fashion Store",
+    "plugins": [
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      "expo-font"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "light",
@@ -18,12 +22,13 @@
     "android": {
       "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
-        "icon": "./assets/images/app-icon.png"
+        "foregroundImage": "./MyApp/assets/images/LOGO.png",
+        "backgroundColor": "#ffffff"
       },
       "package": "com.balakrishnan2001.myapp"
     },
     "web": {
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./MyApp/assets/images/favicon.png"
     },
     "extra": {
       "eas": {

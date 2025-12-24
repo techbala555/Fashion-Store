@@ -13,7 +13,7 @@ export default function SplashScreen() {
   useEffect(() => {
     // Preload assets to avoid any delay in loading images
     Asset.loadAsync([
-      require('../../assets/images/SplashScreen.png'),
+      require('../../assets/images/SplashScreen.jpg'),
       require('../../assets/images/LOGO.png'),
     ]);
 
@@ -38,7 +38,7 @@ export default function SplashScreen() {
 
   return (
     <ImageBackground
-      source={require('../../assets/images/SplashScreen.png')}
+      source={require('../../assets/images/SplashScreen.jpg')}
       style={styles.container}
       resizeMode="cover"
     >
