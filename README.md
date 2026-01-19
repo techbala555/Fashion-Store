@@ -1,10 +1,10 @@
-# 👗 MyFashionApp
+# MyFashionApp
 
 A modern **Fashion Shopping Mobile Application** built using **React Native & Expo**, focused on clean UI and scalable architecture.
 
 ---
 
-## 📸 App Screens
+## App Screens
 
 <p align="center">
   <img src="Fashion.png" alt="Fashion App Screens" width="100%" />
@@ -12,7 +12,7 @@ A modern **Fashion Shopping Mobile Application** built using **React Native & Ex
 
 ---
 
-## 🚀 Features
+## Features
 
 - 🔐 Mobile number login (OTP ready)
 - 🛍️ Product listing & trending collections
@@ -22,16 +22,15 @@ A modern **Fashion Shopping Mobile Application** built using **React Native & Ex
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - React Native
 - Expo (EAS Build)
-- Firebase
 - Expo Vector Icons
 
 ---
 
-## 📦 Build Info
+## Build Info
 
 - Platform: Android
 - Build Type: APK
